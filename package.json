@@ -1,0 +1,31 @@
+{
+  "name": "nuxt-starter",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve:dev": "cross-env RUN_TYPE=dev nuxt dev",
+    "serve:live": "cross-env RUN_TYPE=live nuxt dev",
+    "generate": "cross-env RUN_TYPE=live nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^1.4.1",
+    "@nuxt/test-utils": "^3.19.1",
+    "axios": "^1.10.0",
+    "eslint": "^9.29.0",
+    "nuxt": "^3.17.5",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.0",
+    "prettier": "^3.6.0"
+  }
+}
