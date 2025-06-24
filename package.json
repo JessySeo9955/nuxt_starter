@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "cross-env RUN_TYPE=live nuxt build",
     "serve:dev": "cross-env RUN_TYPE=dev nuxt dev",
     "serve:live": "cross-env RUN_TYPE=live nuxt dev",
     "generate": "cross-env RUN_TYPE=live nuxt generate",
