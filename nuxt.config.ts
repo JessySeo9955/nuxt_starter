@@ -1,26 +1,33 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import dev from './package/config/dev';
 import live from './package/config/live';
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath } from 'node:url';
 const srcDir = 'application';
 const RUN_TYPE = process.env.RUN_TYPE || 'live';
 
 export default defineNuxtConfig({
     compatibilityDate: '2025-05-15',
     runtimeConfig: RUN_TYPE === 'live' ? live : dev,
-    devtools: { enabled: true },
+    devtools: { enabled: false },
     modules: ['@nuxt/eslint', '@nuxt/test-utils'],
     serverDir: './server',
     srcDir: srcDir + '/',
     alias: {
-        '@': '~/application',
+        '@': fileURLToPath(new URL(`./${srcDir}`, import.meta.url)),
         '@assets': fileURLToPath(new URL('./assets', import.meta.url)),
         '@package': fileURLToPath(new URL('./package', import.meta.url)),
     },
     components: [
         {
-            path: '~/' + srcDir + '/components/global',
+            path: `~/${srcDir}/components/global`,
             global: true,
         },
     ],
+    app: {
+        head: {
+            // update Nuxt defaults
+            charset: 'utf-16',
+            viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+        },
+    },
 });
