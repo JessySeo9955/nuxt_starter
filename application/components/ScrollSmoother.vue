@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import gsap from 'gsap/dist/gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { Subject, type Observable, type Subscription } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
-// import { animate } from 'animejs';
 
 interface TriggerInfo {
     selector: string;
@@ -28,7 +27,7 @@ const unSubscribes: Array<Subscription> = [];
 onMounted(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
     const smoother: ScrollSmoother = ScrollSmoother.create({
-        smooth: 3,
+        smooth: 2,
         effects: true,
         normalizeScroll: true,
     });
@@ -97,11 +96,7 @@ function createScrollObservable(trigger: TriggerInfo): Observable<number> {
     </div>
 </template>
 
-<style>
-// TODO move to css style file
-body {
-    margin: 0 auto;
-}
+<style scoped>
 .illust {
     height: 100%;
     margin-right: auto;
@@ -118,61 +113,10 @@ img {
     height: 100vh;
     position: relative;
 }
-body {
-    background-color: #111;
-    font-family: 'Signika Negative', sans-serif, Arial;
-    overscroll-behavior: none;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 
 #smooth-content {
     overflow: visible;
     width: 100%;
-}
-
-button {
-    position: relative;
-}
-
-.box {
-    width: 100px;
-    height: 100px;
-    background-color: #28a92b;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-    line-height: 100px;
-    font-size: 50px;
-    text-align: center;
-    will-change: transform;
-}
-
-.box.active {
-    background-color: red;
-}
-
-.box-a {
-    top: 200px;
-    background-color: #8d3dae;
-}
-
-.box-b {
-    top: 600px;
-}
-
-.box-c {
-    top: 1000px;
-    background-color: #e26c16;
 }
 
 .line {
@@ -185,33 +129,4 @@ button {
     background-color: #777;
 }
 
-header .name {
-    color: white;
-}
-
-.title {
-    text-align: center;
-    color: white;
-    font-weight: 400;
-    font-size: 40px;
-}
-
-footer {
-    position: fixed;
-    right: 0px;
-    bottom: 0px;
-    padding: 6px 10px 10px 12px;
-    border-top-left-radius: 26px;
-    z-index: 100;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.end {
-    position: absolute;
-    /*   bottom: 0; */
-    top: 2400px;
-    transform: translateY(-100%);
-    font-size: 30px;
-    color: white;
-}
 </style>

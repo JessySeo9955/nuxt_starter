@@ -1,0 +1,10 @@
+body {
+    overscroll-behavior: none;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
