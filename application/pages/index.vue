@@ -7,8 +7,9 @@ definePageMeta({
 </script>
 
 <template>
-    <client-only>
-        <ScrollSmoother></ScrollSmoother>
-    </client-only>
+    <NuxtLayout>
+        <client-only>
+            <ScrollSmoother></ScrollSmoother>
+        </client-only>
+    </NuxtLayout>
 </template>
-

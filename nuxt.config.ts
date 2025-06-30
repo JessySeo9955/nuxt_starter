@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-05-15',
     runtimeConfig: RUN_TYPE === 'live' ? live : dev,
     devtools: { enabled: false },
-    modules: ['@nuxt/eslint', '@nuxt/test-utils'],
+    modules: ['@nuxt/eslint', '@nuxt/test-utils', `@/modules/global-loading/module.ts`],
     serverDir: './server',
     srcDir: srcDir + '/',
     alias: {
@@ -25,6 +25,10 @@ export default defineNuxtConfig({
     ],
     css: ['@assets/styles/reset.css', '@assets/styles/global.css'],
     app: {
+        pageTransition: {
+            name: 'fade',
+            mode: 'out-in' // default
+        },
         head: {
             charset: 'utf-16',
             viewport: 'width=device-width, initial-scale=1, maximum-scale=1',

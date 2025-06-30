@@ -1,6 +1,6 @@
 <template>
+    <GlobalSpinner />
     <div class="container">
         <slot />
     </div>
 </template>
-<script setup lang="ts"></script>
