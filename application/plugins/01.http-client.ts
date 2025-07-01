@@ -1,4 +1,3 @@
-import { defineNuxtPlugin, useRuntimeConfig } from 'nuxt/app';
 import HttpClient from '@package/network/HttpClient';
 
 export default defineNuxtPlugin(() => {

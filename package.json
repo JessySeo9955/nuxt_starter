@@ -12,12 +12,10 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test": "vitest"
   },
   "dependencies": {
-    "@barba/core": "^2.10.3",
-    "@nuxt/eslint": "^1.4.1",
-    "@nuxt/test-utils": "^3.19.1",
     "axios": "^1.10.0",
     "gsap": "^3.13.0",
     "nuxt": "^3.17.5",
@@ -26,11 +24,17 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@nuxt/eslint": "^1.4.1",
+    "@nuxt/test-utils": "^3.19.1",
     "@types/animejs": "^3.1.13",
+    "@vue/test-utils": "^2.4.6",
     "cross-env": "^7.0.3",
+    "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.0",
+    "happy-dom": "^17.6.3",
+    "playwright-core": "^1.53.2",
     "prettier": "^3.6.0",
-    "eslint": "^9.29.0"
+    "vitest": "^3.2.4"
   }
 }
