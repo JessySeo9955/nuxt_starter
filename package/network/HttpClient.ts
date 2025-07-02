@@ -1,33 +1,51 @@
-import axios, { type AxiosInstance, type AxiosRequestConfig } from 'axios';
 import type { RuntimeConfig } from '@nuxt/schema';
+import type { NitroFetchOptions } from 'nitropack';
 
 export default class HttpClient {
-    protected httpInstance: AxiosInstance = axios.create({});
+    private baseUrl: string;
 
     constructor(config: RuntimeConfig) {
-        this.httpInstance = axios.create({
-            baseURL: config.public.API_URL,
-            timeout: 1000,
-        });
+        this.baseUrl = config.public.API_URL;
     }
 
-    public get http(): AxiosInstance {
-        return this.httpInstance;
+    private async request<T>(
+        url: string,
+        method: 'GET' | 'DELETE',
+        options: NitroFetchOptions<'json'> = {}
+    ): Promise<T> {
+        return (await $fetch<T>(this.baseUrl + url, { ...options, method })) as T;
     }
 
-    public get<T>(url: string, config: AxiosRequestConfig): Promise<T> {
-        return this.http.get(url, config);
+    private async requestWithBody<T, R>(
+        url: string,
+        method: 'POST' | 'PUT' | 'PATCH',
+        body: R,
+        options: NitroFetchOptions<'json'> = {}
+    ): Promise<T> {
+        return (await $fetch<T>(this.baseUrl + url, {
+            ...options,
+            method,
+            body: body as BodyInit, // cast R to BodyInit
+        })) as T;
     }
 
-    public delete<T>(url: string, config: AxiosRequestConfig): Promise<T> {
-        return this.http.delete(url, config);
+    public get<T>(url: string, options: NitroFetchOptions<'json'> = {}): Promise<T> {
+        return this.request<T>(url, 'GET', options);
     }
 
-    public post<T, R>(url: string, data: R, config: AxiosRequestConfig): Promise<T> {
-        return this.http.post(url, data, config);
+    public delete<T>(url: string, options: NitroFetchOptions<'json'> = {}): Promise<T> {
+        return this.request<T>(url, 'DELETE', options);
     }
 
-    public put<T, R>(url: string, data: R, config: AxiosRequestConfig): Promise<T> {
-        return this.http.put(url, config);
+    public post<T, R>(url: string, body: R, options: NitroFetchOptions<'json'> = {}): Promise<T> {
+        return this.requestWithBody<T, R>(url, 'POST', body, options);
+    }
+
+    public put<T, R>(url: string, body: R, options: NitroFetchOptions<'json'> = {}): Promise<T> {
+        return this.requestWithBody<T, R>(url, 'PUT', body, options);
+    }
+
+    public patch<T, R>(url: string, body: R, options: NitroFetchOptions<'json'> = {}): Promise<T> {
+        return this.requestWithBody<T, R>(url, 'PATCH', body, options);
     }
 }

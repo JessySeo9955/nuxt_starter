@@ -3,37 +3,38 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "cross-env RUN_TYPE=live nuxt build",
-    "serve:dev": "cross-env RUN_TYPE=dev nuxt dev",
-    "serve:live": "cross-env RUN_TYPE=live nuxt dev",
-    "generate": "cross-env RUN_TYPE=live nuxt generate",
+    "build": "cross-env RUN_TYPE=production nuxt build",
+    "serve:dev": "cross-env RUN_TYPE=development nuxt dev",
+    "serve:live": "cross-env RUN_TYPE=production nuxt dev",
+    "generate": "cross-env RUN_TYPE=development nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "vitest"
+    "test:unit": "vitest --config vitest.unit.config.ts",
+    "test:e2e": "playwright test --config playwright.config.ts",
+    "test:e2e:dev": "cross-env NODE_ENV=development playwright test --config playwright.dev.config.ts --headed"
   },
   "dependencies": {
-    "axios": "^1.10.0",
     "gsap": "^3.13.0",
-    "nuxt": "^3.17.5",
+    "nuxt": "^3.17.6",
     "rxjs": "^7.8.2",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.4.1",
-    "@nuxt/test-utils": "^3.19.1",
-    "@types/animejs": "^3.1.13",
+    "@nuxt/test-utils": "^3.19.2",
+    "@playwright/test": "^1.53.2",
+    "@vitest/ui": "^3.2.4",
     "@vue/test-utils": "^2.4.6",
     "cross-env": "^7.0.3",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.0",
     "happy-dom": "^17.6.3",
-    "playwright-core": "^1.53.2",
     "prettier": "^3.6.0",
     "vitest": "^3.2.4"
   }

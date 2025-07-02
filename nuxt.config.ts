@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-05-15',
     runtimeConfig: RUN_TYPE === 'live' ? live : dev,
     devtools: { enabled: false },
-    modules: ['@nuxt/eslint', '@nuxt/test-utils', `@/modules/global-loading/module.ts`, `@nuxt/test-utils/module`],
+    modules: ['@nuxt/eslint', '@nuxt/test-utils', `@/modules/global-loading/module.ts`],
     serverDir: './server',
     srcDir: srcDir + '/',
     alias: {

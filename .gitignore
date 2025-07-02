@@ -6,6 +6,9 @@
 .cache
 dist
 
+# tests
+tests/output
+
 # Node dependencies
 node_modules
 

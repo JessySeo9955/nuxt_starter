@@ -8,6 +8,7 @@ definePageMeta({
 
 <template>
     <NuxtLayout>
+        <h1>Welcome to Gallery</h1>
         <client-only>
             <ScrollSmoother></ScrollSmoother>
         </client-only>

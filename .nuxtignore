@@ -1,4 +1,3 @@
 tests/
 *.spec.ts
 *.test.ts
-cypress/
