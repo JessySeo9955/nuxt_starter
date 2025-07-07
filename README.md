@@ -1,45 +1,73 @@
-# Nuxt Minimal Starter
+# 📁 Project Structure: Nuxt Application
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This document outlines the structure of the Nuxt application and the purpose of each directory or file.
 
-## Setup
+---
 
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
+## 📦 Root Structure
+```
+├── application/ # Core Nuxt app (pages, layouts, plugins, etc.)
+├── package/ # Custom logic (utils, API handlers)
+├── public/ # Static files served as-is
+├── assets/ # Imported assets (CSS, fonts, images)
+├── tests/ # Unit and E2E tests
+├── .nvmrc # Node.js version configuration
+└── ...
 
 ```
+---
 
-## Development Server
+## 📂 application/
 
-Start the development server on `http://localhost:3000`:
+Standard Nuxt 3 directory containing:
+- `pages/` – Route-based pages
+- `layouts/` – Custom layouts
+- `plugins/` – Nuxt plugins
+- `middleware/` – Route middleware
+- etc.
 
-```bash
-# npm
-npm run serve:dev
+---
 
-```
+## 📂 package/
 
-## Production
+Custom logic organized for scalability:
 
-Build the application for production:
+- `utils/` – Reusable utility functions (formatters, validators, etc.)
+- `api/` – API request handlers (e.g., $fetch wrappers, backend interaction)
 
-```bash
-# npm
-npm run build
-```
+---
 
-Locally preview production build:
+## 📂 public/
 
-```bash
-# npm
-npm run preview
+Files placed here are **served statically** at the root level (`/`).
 
-```
+Examples:
+- `favicon.ico`
+- `robots.txt`
+- Static images (`/logo.png` becomes accessible at `http://yourdomain.com/logo.png`)
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
 
-## e2e testing
-npx playwright install 
+## 📂 assets/
+
+Used for assets that are **processed by Nuxt/Vite**, such as:
+- SCSS/CSS
+- Fonts
+- Images used via imports in Vue components
+
+---
+
+## 📂 tests/
+
+Organized into:
+
+- `unit/` – Component, composable, and logic unit tests
+- `e2e/` – End-to-end tests using tools like Playwright or Cypress
+
+---
+
+## 📄 .nvmrc
+
+Defines the Node.js version for this project. Useful for consistency across local development and CI/CD pipelines.
+
+
